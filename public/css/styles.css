@@ -1,0 +1,26 @@
+.modal-close-btn__wrapper {
+    width: 30px;
+    aspect-ratio: 1;
+    cursor: pointer;
+}
+
+.modal-close-btn {
+    position: relative;
+}
+
+.modal-close-btn::before, .modal-close-btn::after {
+    content: '';
+    display: block;
+    width: 30px;
+    height: 3px;
+    background-color: #000;
+    position: absolute;
+}
+
+.modal-close-btn::before {
+    rotate: 45deg;
+}
+
+.modal-close-btn::after {
+    rotate: -45deg;
+}
