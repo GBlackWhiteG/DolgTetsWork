@@ -31,7 +31,7 @@ class OrderController extends Controller
 
         $order = Order::create($data);
 
-        (new GoogleSheetsService())->appendRowToSheet($order);
+        (new GoogleSheetsService())->appendRowToSheet([array_values($order->toArray())]);
 
         return redirect()->back();
     }
@@ -68,13 +68,11 @@ class OrderController extends Controller
         return redirect()->back();
     }
 
-    public function test(): RedirectResponse
+    public function writeTable(): RedirectResponse
     {
         $orders = array_map(function ($ell) {
             return array_values($ell);
         }, Order::allowed()->get()->toArray());
-
-        (new GoogleSheetsService())->writeSheet($orders);
 
         return redirect()->route('index');
     }

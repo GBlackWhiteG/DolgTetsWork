@@ -61,13 +61,6 @@ class GoogleSheetsService
         );
     }
 
-    public function appendRowToSheet($value)
-    {
-        if (!$this->documentId) return;
-
-        $this->service->spreadsheets_values->append($this->documentId, $this->range, $value);
-    }
-
     private function getIndexForDelete($id)
     {
         $doc = $this->service->spreadsheets_values->get($this->documentId, $this->range);

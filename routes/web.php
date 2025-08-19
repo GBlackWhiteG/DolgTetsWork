@@ -14,7 +14,7 @@ Route::controller(OrderController::class)->group(function () {
     Route::post('/clear-db', 'clearDb')->name('clearDb');
 
     Route::post('/clear-google-sheet', 'clearGoogleSheet')->name('clearGoogleSheet');
-    Route::get('/test', 'test');
+    Route::get('/write-table', 'writeTable');
 
     Route::get('/fetch/{count?}', 'fetch')->name('fetch');
 });
