@@ -31,8 +31,6 @@ class OrderController extends Controller
 
         $order = Order::create($data);
 
-        (new GoogleSheetsService())->appendRowToSheet([array_values($order->toArray())]);
-
         return redirect()->back();
     }
 
@@ -73,6 +71,8 @@ class OrderController extends Controller
         $orders = array_map(function ($ell) {
             return array_values($ell);
         }, Order::allowed()->get()->toArray());
+
+        (new GoogleSheetsService())->writeSheet($orders);
 
         return redirect()->route('index');
     }
